@@ -35,7 +35,7 @@ function adicionar() {
  } 
     function limparCarrinho() {
         document.getElementById('lista-produtos').innerHTML = '';
-        document.getElementById('valor-total').textContent = 'R$ ';
+        document.getElementById('valor-total').textContent = '';
 
     
     }
