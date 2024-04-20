@@ -13,18 +13,23 @@ function adicionar() {
     let preço = valor * quantidade;
     
     
-    //adicionar no carrinho 
-    let listaProdutos = document.getElementById('lista-produtos');
-    listaProdutos.innerHTML = listaProdutos.innerHTML + `<section class="carrinho__produtos__produto">
-    <span class="texto-azul">${quantidade}x</span> ${nomeProduto} <span class="texto-azul">R$${preço}</span>
-  </section>`;
-  limparQuantidade();
-    
-  //atualizar o valor total
-  valorTotal = valorTotal + preço;
-  let campoDoValorTotal = document.getElementById('valor-total');
-  campoDoValorTotal.textContent = `R$${valorTotal}`;
-  
+    //Se houver algum campo vázio, alerta mensagem de erro
+    if(quantidade != 0) {
+        //adicionar no carrinho
+        let listaProdutos = document.getElementById('lista-produtos');
+        listaProdutos.innerHTML = listaProdutos.innerHTML + `<section class="carrinho__produtos__produto">
+        <span class="texto-azul">${quantidade}x</span> ${nomeProduto} <span class="texto-azul">${preço}</span>
+        </section>`;
+        limparQuantidade();
+        //atualizar o valor total
+        valorTotal = valorTotal + preço;
+        let campoDoValorTotal = document.getElementById('valor-total');
+        campoDoValorTotal.textContent = `${valorTotal}`;
+    }   else {
+            alert('Preencha o campo "quantidade" corretamente');
+            document.getElementById('quantidade').focus();
+            document.getElementById('quantidade').value = 1;
+        } 
  }
     
  function limparQuantidade(quantidade) {
@@ -36,7 +41,5 @@ function adicionar() {
     function limparCarrinho() {
         document.getElementById('lista-produtos').innerHTML = '';
         document.getElementById('valor-total').textContent = '';
-
-    
     }
     
