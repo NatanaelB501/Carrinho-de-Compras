@@ -8,8 +8,8 @@ function adicionar() {
     //recuperar valores nome do produto, quantidade e valor
     let produto = document.getElementById('produto').value;
     let nomeProduto = produto.split('-')[0];
-    let valor = parseFloat(produto.split('R$')[1]);
-    let quantidade = parseFloat(document.getElementById('quantidade').value);
+    let valor = produto.split('R$')[1];
+    let quantidade = document.getElementById('quantidade').value;
     
     
     //calcular o preço, o nosso subtotal 
