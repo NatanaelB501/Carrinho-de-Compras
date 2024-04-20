@@ -1,4 +1,4 @@
-let valorTotal = 0;
+let valorTotal = parseFloat(0);
 
 //iniciar o campo 'quantidade' focado e com 1 unidade
 document.getElementById('quantidade').focus();
@@ -8,12 +8,12 @@ function adicionar() {
     //recuperar valores nome do produto, quantidade e valor
     let produto = document.getElementById('produto').value;
     let nomeProduto = produto.split('-')[0];
-    let valor = produto.split('R$')[1];
-    let quantidade = document.getElementById('quantidade').value;
+    let valor = parseFloat(produto.split('R$')[1]);
+    let quantidade = parseFloat(document.getElementById('quantidade').value);
     
     
     //calcular o preço, o nosso subtotal 
-    let preço = valor * quantidade;
+    let preço = parseFloat(valor * quantidade);
     
     
     //Se houver algum campo vázio, alerta mensagem de erro
@@ -27,9 +27,10 @@ function adicionar() {
         limparQuantidade();
         
         //atualizar o valor total
-        valorTotal = valorTotal + preço;
+        valorTotal = parseFloat(valorTotal + preço);
         let campoDoValorTotal = document.getElementById('valor-total');
-        campoDoValorTotal.textContent = `${valorTotal}`;
+        //COLOCA O FORMATO BRL NO TOTAL DO CARRINHO.
+        campoDoValorTotal.textContent = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'});
     }   else {
             alert('Preencha o campo "quantidade" corretamente');
             document.getElementById('quantidade').focus();
@@ -50,4 +51,3 @@ function limparCarrinho() {
         document.getElementById('lista-produtos').innerHTML = '';
         document.getElementById('valor-total').textContent = '';
 }
-    
