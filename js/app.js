@@ -1,8 +1,7 @@
 let valorTotal = 0;
 document.getElementById('quantidade').focus();
+document.getElementById('quantidade').value = 1;
 function adicionar() {
-    document.getElementById('quantidade').focus();
-    
     //recuperar valores nome do produto, quantidade e valor
     let produto = document.getElementById('produto').value;
     let nomeProduto = produto.split('-')[0];
@@ -32,6 +31,7 @@ function adicionar() {
     quantidade = document.getElementById('quantidade');
     quantidade.value = '';
     document.getElementById('quantidade').focus();
+    document.getElementById('quantidade').value = 1;
  } 
     function limparCarrinho() {
         document.getElementById('lista-produtos').innerHTML = '';
